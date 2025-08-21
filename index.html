@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Jadibot Notmebotz MD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #00bcd4, #0080ff, #ff0000, #ffffff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #ff0000, #0080ff);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .step-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .success-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #ff0000, #0080ff);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .glass-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 25s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; right: 15%; top: 30%; animation-duration: 18s; animation-delay: 2s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; left: 20%; bottom: 20%; animation-duration: 22s; animation-delay: 5s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; right: 25%; bottom: 30%; animation-duration: 20s; animation-delay: 3s;"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Tutorial Jadibot Notmebotz MD</h1>
+            <p class="subtitle">Panduan lengkap untuk menggunakan Notmebotz MD sebagai bot WhatsApp</p>
+        </header>
+
+        <div class="glass-card">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2 class="step-title">Siapkan 2 Perangkat</h2>
+                    <p class="step-description">Pertama, siapkan dua perangkat yang akan digunakan. Satu perangkat utama untuk menjalankan bot dan satu lagi untuk proses pemindaian kode QR.</p>
+                    <div class="image-container">
+                        <img src="https://i.supa.codes/2b4JQz" alt="Dua perangkat smartphone" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2 class="step-title">Download Kode QR</h2>
+                    <p class="step-description">Unduh kode QR dari aplikasi Notmebotz MD pada perangkat kedua. Pastikan perangkat ini terhubung ke internet dengan stabil.</p>
+                    <div class="image-container">
+                        <img src="https://i.supa.codes/KcQIo3" alt="Mengunduh kode QR" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2 class="step-title">Buka WhatsApp dan Pencet Titik Tiga</h2>
+                    <p class="step-description">Pada perangkat utama, buka aplikasi WhatsApp. Kemudian tekan ikon menu (titik tiga) yang berada di pojok kanan atas layar untuk membuka menu pilihan.</p>
+                    <div class="image-container">
+                        <img src="https://i.supa.codes/hKRPo5" alt="Menu WhatsApp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h2 class="step-title">Pilih Link a Device atau Tautan Perangkat</h2>
+                    <p class="step-description">Dari menu yang muncul, pilih opsi "Link a Device" atau "Tautan Perangkat" untuk memulai proses penyambungan perangkat baru.</p>
+                    <div class="image-container">
+                        <img src="https://i.supa.codes/bmukC1" alt="Opsi tautan perangkat" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h2 class="step-title">Pindai Kode QR</h2>
+                    <p class="step-description">Gunakan perangkat kedua yang sudah mengunduh kode QR untuk memindai kode QR yang ditampilkan pada perangkat utama. Pastikan kamera perangkat dalam kondisi baik dan pencahayaan cukup.</p>
+                    <div class="image-container">
+                        <img src="https://i.supa.codes/6Halcw" alt="Memindai kode QR" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card success-section">
+            <h2 class="success-title">Selesai!</h2>
+            <p class="success-message">Selamat! Anda telah berhasil menyambungkan Notmebotz MD sebagai jadibot pada WhatsApp. Sekarang Anda dapat menggunakan semua fitur bot yang tersedia.</p>
+            <a href="https://wa.me/6285656036548" class="button">Mulai Menggunakan Bot</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Tutorial Notmebotz MD | Dibuat dengan ❤️ untuk pengguna WhatsApp</p>
+    </footer>
+
+    <script>
+        function createFloatingElements() {
+            const floatingContainer = document.querySelector('.floating-elements');
+            for (let i = 0; i < 8; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                const size = Math.random() * 100 + 50;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                
+                const duration = Math.random() * 15 + 15;
+                element.style.animationDuration = `${duration}s`;
+                
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                
+                floatingContainer.appendChild(element);
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const header = document.querySelector('header');
+            header.style.transform = `translateY(${scrollY * 0.3}px)`;
+            
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((element, index) => {
+                const speed = index % 2 === 0 ? 0.2 : -0.2;
+                element.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                cards.forEach(c => c.style.opacity = '0.7');
+                this.style.opacity = '1';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                cards.forEach(c => c.style.opacity = '1');
+            });
+        });
+
+        window.onload = function() {
+            createFloatingElements();
+        };
+    </script>
+</body>
+</html>
